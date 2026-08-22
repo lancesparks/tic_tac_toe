@@ -72,3 +72,10 @@ html {
   position: absolute;
   transform: rotate(-45deg);
 }
+
+.o_mark {
+  height: 120px;
+  width: 120px;
+  border: 10px solid #000;
+  border-radius: 50%;
+}
