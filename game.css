@@ -101,9 +101,8 @@ dialog::backdrop {
   gap: 15px;
 }
 
-#welcomeDialog {
+.closeDialog {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
