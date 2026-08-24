@@ -33,8 +33,6 @@ const initGame = () => {
       return;
     }
 
-    console.log(currentPlayer);
-
     if (currentPlayer === player1) {
       square.append(createXMark());
       currentPlayer = player2;
