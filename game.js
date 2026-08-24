@@ -1,5 +1,6 @@
 let player1 = null;
 let player2 = null;
+let currentPlayer = null;
 
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
@@ -13,10 +14,12 @@ const initGame = () => {
 
     player1 = p1Input || "Player 1";
     player2 = p2Input || "Player 2";
+    currentPlayer = player1;
   });
 
   board.addEventListener("click", (e) => {
     const item = e.target.closest(".game_board_item");
+
     if (!item) {
       return;
     }
@@ -30,7 +33,15 @@ const initGame = () => {
       return;
     }
 
-    square.append(createOMark());
+    console.log(currentPlayer);
+
+    if (currentPlayer === player1) {
+      square.append(createXMark());
+      currentPlayer = player2;
+    } else {
+      square.append(createOMark());
+      currentPlayer = player1;
+    }
   });
 };
 
