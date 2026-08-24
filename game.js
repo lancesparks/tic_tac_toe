@@ -1,5 +1,8 @@
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
+  const welcomeDialog = document.getElementById("welcomeDialog");
+
+  welcomeDialog?.showModal();
 
   board.addEventListener("click", (e) => {
     const item = e.target.closest(".game_board_item");
