@@ -12,7 +12,10 @@ const initGame = () => {
 
     const square = document.getElementById(item.id);
 
-    if (square.querySelector(".x_mark_container") !== null) {
+    if (
+      square.querySelector(".x_mark_container") !== null ||
+      square.querySelector(".o_mark") !== null
+    ) {
       return;
     }
 
