@@ -1,8 +1,19 @@
+let player1 = null;
+let player2 = null;
+
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
   const welcomeDialog = document.getElementById("welcomeDialog");
 
   welcomeDialog?.showModal();
+
+  welcomeDialog?.addEventListener("close", (e) => {
+    const p1Input = document.getElementById("playerOneInput").value.trim();
+    const p2Input = document.getElementById("playerTwoInput").value.trim();
+
+    player1 = p1Input || "Player 1";
+    player2 = p2Input || "Player 2";
+  });
 
   board.addEventListener("click", (e) => {
     const item = e.target.closest(".game_board_item");
