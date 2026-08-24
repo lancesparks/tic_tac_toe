@@ -93,3 +93,32 @@ dialog::backdrop {
   border: 10px solid #000;
   border-radius: 50%;
 }
+
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+#welcomeDialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerInput {
+  padding: 5px;
+}
+
+#closeWelcome {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-top: 15px;
+}

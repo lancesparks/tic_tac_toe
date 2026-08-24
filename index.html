@@ -8,9 +8,29 @@
   <body>
     <main class="game_board">
       <dialog id="welcomeDialog">
-        <div>hello</div>
+        <div class="dialogMain">
+          <div class="player">
+            <h2>Player 1</h2>
+            <input
+              class="playerInput"
+              id="playerOneInput"
+              type="text"
+              placeholder="Player 1 name"
+            />
+          </div>
+
+          <div class="player">
+            <h2>Player 2</h2>
+            <input
+              class="playerInput"
+              id="playerTwoInput"
+              type="text"
+              placeholder="Player 2 name"
+            />
+          </div>
+        </div>
         <form method="dialog">
-          <button type="submit" id="closeWelcome">Close</button>
+          <button type="submit" id="closeWelcome">Confirm</button>
         </form>
       </dialog>
       <div class="game_board_container">
