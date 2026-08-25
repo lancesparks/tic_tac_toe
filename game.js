@@ -75,12 +75,12 @@ const createOMark = () => {
 };
 
 const addPlayers = () => {
-  const container = document.getElementById("score_container");
+  const container = document.getElementById("scores");
   const p1 = document.getElementById("player1_name");
   const p2 = document.getElementById("player2_name");
 
-  p1.append(player1);
-  p2.append(player2);
+  p1.prepend(player1);
+  p2.prepend(player2);
 
   container.classList.remove("hide");
 };
