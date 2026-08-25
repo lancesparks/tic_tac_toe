@@ -121,3 +121,7 @@ dialog::backdrop {
   border-radius: 4px;
   margin-top: 15px;
 }
+
+.hide {
+  opacity: 0;
+}
