@@ -1,6 +1,10 @@
 let player1 = null;
 let player2 = null;
 let currentPlayer = null;
+let currentScores = {
+  player1: 0,
+  player2: 0
+};
 
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
@@ -15,6 +19,7 @@ const initGame = () => {
     player1 = p1Input || "Player 1";
     player2 = p2Input || "Player 2";
     currentPlayer = player1;
+    addPlayers();
   });
 
   board.addEventListener("click", (e) => {
@@ -67,6 +72,17 @@ const createOMark = () => {
   });
 
   return container;
+};
+
+const addPlayers = () => {
+  const container = document.getElementById("score_container");
+  const p1 = document.getElementById("player1_name");
+  const p2 = document.getElementById("player2_name");
+
+  p1.append(player1);
+  p2.append(player2);
+
+  container.classList.remove("hide");
 };
 
 if (typeof window !== "undefined" && typeof exports === "undefined") {
