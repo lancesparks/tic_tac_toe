@@ -110,8 +110,7 @@ dialog::backdrop {
 .playerInput {
   padding: 5px;
 }
-
-#closeWelcome {
+.gameButton {
   border: none;
   outline: none;
   font-size: 16px;
@@ -127,10 +126,15 @@ dialog::backdrop {
 }
 
 #scores {
-  display: flex;
+  display: grid;
   justify-content: center;
 }
 
 .currentScore {
   margin-left: 10px;
+}
+
+.resetGame {
+  display: flex;
+  justify-content: center;
 }

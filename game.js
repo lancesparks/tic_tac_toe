@@ -26,6 +26,7 @@ const winMap = new Map();
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
   const welcomeDialog = document.getElementById("welcomeDialog");
+  const newGame = document.getElementById("newGame");
 
   welcomeDialog?.showModal();
 
@@ -64,6 +65,10 @@ const initGame = () => {
       checkSquareSymbol(square);
       currentPlayer = player1;
     }
+  });
+
+  newGame.addEventListener("click", () => {
+    handleNewGame();
   });
 };
 
@@ -136,13 +141,47 @@ const checkWin = (moves, winConditions) => {
 };
 
 const handleWin = () => {
+  const button = document.getElementById("newGame");
   const scores = document.getElementById("scores_container");
   const winBanner = Object.assign(document.createElement("p"), {
     id: "winBanner"
   });
 
   scores.append(winBanner);
+  handleUpdateScore(currentPlayer);
+  button.classList.remove("hide");
   document.getElementById("winBanner").append(`${currentPlayer} wins!`);
+};
+
+const handleUpdateScore = (currentPlayer) => {
+  const player1Score = document.getElementById("player1_score");
+  const player2Score = document.getElementById("player2_score");
+
+  if (currentPlayer === player1) {
+    currentScores.player1 += 1;
+    player1Score.textContent = currentScores.player1;
+  }
+
+  if (currentPlayer === player2) {
+    currentScores.player2 += 1;
+    player2Score.textContent = currentScores.player2;
+  }
+};
+
+const handleNewGame = () => {
+  document
+    .querySelectorAll(".x_mark_container, .o_mark, #winBanner")
+    .forEach((mark) => {
+      mark.remove();
+    });
+
+  const button = document.getElementById("newGame");
+  button.classList.add("hide");
+
+  moves = {
+    X: [],
+    O: []
+  };
 };
 
 if (typeof window !== "undefined" && typeof exports === "undefined") {
