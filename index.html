@@ -16,6 +16,10 @@
           <span class="currentScore" id="player2_score">0</span>
         </p>
       </div>
+
+      <div class="resetGame">
+        <button class="gameButton hide" id="newGame">New Game</button>
+      </div>
     </div>
     <main class="game_board">
       <dialog id="welcomeDialog">
@@ -41,7 +45,9 @@
           </div>
         </div>
         <form method="dialog" class="closeDialog">
-          <button type="submit" id="closeWelcome">Confirm</button>
+          <button class="gameButton" type="submit" id="closeWelcome">
+            Confirm
+          </button>
         </form>
       </dialog>
       <div class="game_board_container">
