@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="game.css" />
   </head>
   <body>
-    <div class="hide" id="score_container">
-      <h2>Current Score:</h2>
-      <p id="player1_name"><span id="player1_score"></span></p>
-      <p id="player2_name"><span id="player2_score"></span></p>
+    <div class="scores hide" id="scores">
+      <div class="scores_container">
+        <h2>Current Score:</h2>
+        <p id="player1_name">
+          <span class="currentScore" id="player1_score">0</span>
+        </p>
+        <p id="player2_name">
+          <span class="currentScore" id="player2_score">0</span>
+        </p>
+      </div>
     </div>
     <main class="game_board">
       <dialog id="welcomeDialog">

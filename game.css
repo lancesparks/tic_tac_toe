@@ -125,3 +125,12 @@ dialog::backdrop {
 .hide {
   opacity: 0;
 }
+
+#scores {
+  display: flex;
+  justify-content: center;
+}
+
+.currentScore {
+  margin-left: 10px;
+}
