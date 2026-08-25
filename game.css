@@ -119,6 +119,11 @@ dialog::backdrop {
   padding: 6px 12px;
   border-radius: 4px;
   margin-top: 15px;
+  cursor: pointer;
+}
+
+.gameButton:hover {
+  opacity: 0.8;
 }
 
 .hide {
