@@ -5,6 +5,23 @@ let currentScores = {
   player1: 0,
   player2: 0
 };
+const winConditions = {
+  diagonalTopLeft: ["tl", "mm", "br"],
+  diagonalTopRight: ["tr", "mm", "bl"],
+  straightTop: ["tl", "tm", "tr"],
+  straightMiddle: ["ml", "mm", "mr"],
+  straightBottom: ["bl", "bm", "br"],
+  TopLeft: ["tl", "ml", "bl"],
+  topMiddle: ["tm", "mm", "bm"],
+  TopRight: ["tr", "mr", "br"]
+};
+
+let moves = {
+  X: [],
+  O: []
+};
+
+const winMap = new Map();
 
 const initGame = () => {
   const board = document.querySelector(".game_board_container");
@@ -40,9 +57,11 @@ const initGame = () => {
 
     if (currentPlayer === player1) {
       square.append(createXMark());
+      checkSquareSymbol(square);
       currentPlayer = player2;
     } else {
       square.append(createOMark());
+      checkSquareSymbol(square);
       currentPlayer = player1;
     }
   });
@@ -83,6 +102,47 @@ const addPlayers = () => {
   p2.prepend(player2);
 
   container.classList.remove("hide");
+};
+
+const checkSquareSymbol = (square) => {
+  const squareID = square.id;
+  let currentSymbol = "";
+
+  if (square.querySelector(".x_mark_container")) {
+    currentSymbol = "X";
+  }
+
+  if (square.querySelector(".o_mark")) {
+    currentSymbol = "O";
+  }
+
+  moves = {
+    ...moves,
+    [currentSymbol]: [...moves[currentSymbol], squareID]
+  };
+
+  for (const [key, value] of Object.entries(winConditions)) {
+    let xWin = checkWin(moves["X"], value);
+    let oWin = checkWin(moves["O"], value);
+    if (xWin || oWin) {
+      handleWin();
+      return;
+    }
+  }
+};
+
+const checkWin = (moves, winConditions) => {
+  return winConditions.every((id) => moves.includes(id));
+};
+
+const handleWin = () => {
+  const scores = document.getElementById("scores_container");
+  const winBanner = Object.assign(document.createElement("p"), {
+    id: "winBanner"
+  });
+
+  scores.append(winBanner);
+  document.getElementById("winBanner").append(`${currentPlayer} wins!`);
 };
 
 if (typeof window !== "undefined" && typeof exports === "undefined") {
