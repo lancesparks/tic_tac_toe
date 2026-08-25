@@ -21,6 +21,8 @@ let moves = {
   O: []
 };
 
+let gameOver = false;
+
 const winMap = new Map();
 
 const initGame = () => {
@@ -41,6 +43,9 @@ const initGame = () => {
   });
 
   board.addEventListener("click", (e) => {
+    if (gameOver) {
+      return;
+    }
     const item = e.target.closest(".game_board_item");
 
     if (!item) {
@@ -134,13 +139,18 @@ const checkSquareSymbol = (square) => {
       return;
     }
   }
+
+  if (moves["X"].length + moves["O"].length === 9) {
+    handleWin(true);
+    return;
+  }
 };
 
 const checkWin = (moves, winConditions) => {
   return winConditions.every((id) => moves.includes(id));
 };
 
-const handleWin = () => {
+const handleWin = (isDraw = false) => {
   const button = document.getElementById("newGame");
   const scores = document.getElementById("scores_container");
   const winBanner = Object.assign(document.createElement("p"), {
@@ -148,9 +158,18 @@ const handleWin = () => {
   });
 
   scores.append(winBanner);
-  handleUpdateScore(currentPlayer);
   button.classList.remove("hide");
-  document.getElementById("winBanner").append(`${currentPlayer} wins!`);
+
+  gameOver = true;
+
+  if (!isDraw) {
+    handleUpdateScore(currentPlayer);
+    document.getElementById("winBanner").append(`${currentPlayer} wins!`);
+  }
+
+  if (isDraw) {
+    document.getElementById("winBanner").append(`It is a draw!`);
+  }
 };
 
 const handleUpdateScore = (currentPlayer) => {
@@ -169,6 +188,8 @@ const handleUpdateScore = (currentPlayer) => {
 };
 
 const handleNewGame = () => {
+  gameOver = false;
+
   document
     .querySelectorAll(".x_mark_container, .o_mark, #winBanner")
     .forEach((mark) => {
@@ -182,6 +203,8 @@ const handleNewGame = () => {
     X: [],
     O: []
   };
+
+  currentPlayer = player1;
 };
 
 if (typeof window !== "undefined" && typeof exports === "undefined") {
